@@ -57,13 +57,17 @@ import Livre from './livre.js';
                     Dom =this.afficherDom(Dom, i);             
                 }       
            }      
-
         } 
                    
     } 
+    /**
+     * 
+     * Fonction d'affichage des livres dans le dom 
+     * @param {*} Dom 
+     * @param {*} i 
+     * @returns Dom
+     */
  
-
-
      afficherDom(Dom, i) {
          Dom = ` <div class="carte" data-js-pos= ${i}>
                     <img src="${livres[i].image}">
