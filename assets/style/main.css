@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 8vw;
+}
+img{
+    max-width: 100%;
+}
+
+main
+{
+    display: flex;
+    gap: 10px;
+}
+
+h4, p 
+{
+    letter-spacing: 0.03em;
+    margin: 0;
+    padding: 0;
+}
+
+p + p 
+{
+    margin-top: 6px;
+}
+
+div > p 
+{
+    margin-top: 10px;
+}
+
+.menu
+{
+    flex: 20%;
+}
+
+.affichage
+{
+    flex: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3vw;
+}
+
+footer
+{
+
+    display: flex;
+    gap: 120px;
+    align-items: center;
+    bottom: 0;
+        
+}
+
+
+.carte button
+{
+    justify-content: flex-end;
+    float: right;
+    width: 75px;
+    border-radius: 8px;
+
+}
+
+.carte img{
+
+    overflow: hidden;
+    object-fit: cover;
+    /* width: 223px;
+    height: 280px;  */
+
+}
