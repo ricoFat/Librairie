@@ -79,3 +79,7 @@ import Livre from './livre.js';
          return Dom;
      }
 }
+
+/* Where you are right now doesnt have to determine where you're end up.
+No one is written your destiny for you because here on earth, you write your own destiny, you make your own future.That why you have to set up high goals for your education and do everthing you can to meet them. B
+ut whatever you resolve to do, COMMIT  to it , WORK  at it. Sometimes you get that sense from tv or social media that you can be rich without any hard work by playing any major sport or being on reality's show TV, chances are ; you are not gonna be it .The thuth is:"beeing SUCESSFULL"  is HARD. You wont succeed at things the first time you try but Keep tryin and results will come... */
