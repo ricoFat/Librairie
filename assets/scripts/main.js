@@ -1,6 +1,6 @@
 import Librairie from './librairie.js';
-import { livres } from "./livres.js";
-(function () {
+(function () 
+{
 
     let elLib = document.querySelectorAll('[data-js-librairie]');
 
@@ -10,6 +10,5 @@ import { livres } from "./livres.js";
         new Librairie(elLib[i]);
 
     }
-
 })();
 
