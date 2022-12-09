@@ -17,8 +17,6 @@ import Livre from './livre.js';
 
     init()
     {
-        let Dom ="";
-        this.elLivre.innerHTML = "";
 
         this.afficherChargementPage();
 
