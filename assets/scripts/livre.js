@@ -43,6 +43,10 @@ export default class Livre
     } 
 
   
+    getTitre()
+    {
+        return this.#titre;
+    }
     
     getEditeur()
     {
