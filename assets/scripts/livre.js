@@ -13,9 +13,9 @@ export default class Livre
      * Constructeur de la classe Livre 
      * @param oLivre
      */
-    constructor(oLivre)
+    constructor(el)
     {
-        this._el = oLivre;
+       /*  this._el = oLivre;
         this.#prix = this._el.prix;
         this.#description = this._el.description;
         this.#titre = this._el.titre;
@@ -23,18 +23,18 @@ export default class Livre
         this.#editeur = this._el.editeur;
         this.#pages = this._el.pages;
         this.#nouveaute = this._el.nouveaute;
-        this.#categorie = this._el.categorie
+        this.#categorie = this._el.categorie */
 
-        this.tuile = document.querySelector('[data-js-pos]');
+        this.tuile = document.querySelectorAll('[data-js-pos]');
         
-        /* console.log(this.prix);
-        console.log(this.tuile); */
+    
+      /*   console.log(this.tuile);  */
         this.init()
     }
 
     init()
     {
-        this.tuile.addEventListener('click', function (e) {
+        /* this.tuile.addEventListener('click', function (e) {
             e.preventDefault;
             console.log("Je suis le livre ");
             console.log(this.getPrix());
@@ -42,8 +42,8 @@ export default class Livre
 
 
        
-        }.bind(this));
-    }
+        }.bind(this));*/
+    } 
 
     getPrix()
     {
