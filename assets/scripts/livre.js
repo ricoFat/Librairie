@@ -1,12 +1,9 @@
 export default class Livre
 {
-    #prix;
     #description;
     #titre;
-    #categorie;
     #editeur;
     #pages;
-    #nouveaute;
     #auteur;
 
     /**
@@ -15,20 +12,20 @@ export default class Livre
      */
     constructor(el)
     {
-       /*  this._el = oLivre;
-        this.#prix = this._el.prix;
-        this.#description = this._el.description;
-        this.#titre = this._el.titre;
-        this.#auteur = this._el.auteur;
-        this.#editeur = this._el.editeur;
-        this.#pages = this._el.pages;
-        this.#nouveaute = this._el.nouveaute;
-        this.#categorie = this._el.categorie */
+         this._el = el;
+         this.position = this._el.dataset.jsPosition;
+         /*
+    
+        this.#description = livres[this.position].description;
+        this.#titre = livres[this.position].titre;
+        this.#auteur = livres[this.position].auteur;
+        this.#editeur = livres[this.position].editeur;
+        this.#pages = livres[this.position].pages;
+         */
 
-        this.tuile = document.querySelectorAll('[data-js-pos]');
         
     
-      /*   console.log(this.tuile);  */
+         console.log(this.position);  
         this.init()
     }
 
@@ -45,10 +42,7 @@ export default class Livre
         }.bind(this));*/
     } 
 
-    getPrix()
-    {
-        return this.#prix;
-    }
+  
     
     getEditeur()
     {
@@ -58,11 +52,6 @@ export default class Livre
     getDescription()
     {
         return this.#description;
-    }
-
-    getNouveaute()
-    {
-        return this.#nouveaute;
     }
 
     getPages()
@@ -75,8 +64,4 @@ export default class Livre
         return this.#auteur;
     }
 
-    getCategorie()
-    {
-        return this.#categorie;
-    }
 }

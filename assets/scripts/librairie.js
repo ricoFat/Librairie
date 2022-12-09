@@ -89,7 +89,7 @@ import Livre from './livre.js';
      injecterDom(i) 
      {
         let Dom ="";
-        Dom = ` <div class="carte" data-js-pos= ${i}>
+        Dom = ` <div class="carte" data-js-position= ${i}>
                     <img src="${livres[i].image}">
                     <p>${livres[i].titre}</p>
                     <p><b>${livres[i].prix}$</b></p>
