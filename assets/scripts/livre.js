@@ -63,7 +63,7 @@ export default class Livre
 
     ajouterSession()
     {
-    
+        let sessionStorage = new Panier();
         let obj = {
             titre: livres[this.position].titre,
             prix: livres[this.position].prix

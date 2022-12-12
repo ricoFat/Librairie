@@ -4,7 +4,7 @@ export default class Panier
     constructor(el)
     {
         this._el = el;
-        //this.data = JSON.parse(this._el);
+        this.sessionStorage = window.sessionStorage;
 
         console.log(this_el);
     }
