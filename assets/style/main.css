@@ -60,7 +60,7 @@ footer
 
 .carte button
 {
-    justify-content: flex-end;
+    justify-content: space-around;
     float: right;
     width: 75px;
     border-radius: 8px;
@@ -74,4 +74,98 @@ footer
     /* width: 223px;
     height: 280px;  */
 
+}
+
+
+/* COMPONENT - MODAL */
+
+
+.modal {
+    align-items: center;
+    background-color: rgba(0,0,0,.9);
+    display: flex;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    padding: 6vw;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.modal--close {
+    /* Le comportement  du modal à la fermeture fermetur*/
+    pointer-events: none;
+    opacity: 0;
+    transition: transform .3s ease;
+    transform: translateY(100px);
+    
+}
+.livre{
+
+    display:flex;
+    flex-direction: row;
+    gap: 20px;
+    background-color: white;
+    justify-content: center;
+}
+
+.info-livre{
+    margin-top: 80px ;
+}
+
+.modal--open {
+    /* Le comportement à l'ouverture du modal*/
+    pointer-events: all;
+    opacity: 1;
+    transition: transform .3s ease;
+    transform: translateX(0);
+}
+
+.modal__content {
+    height: fit-content;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+
+.modal__content::after {
+    content: "";
+    display: block;
+}
+
+.modal__content--youtube--livre::after {
+    padding-bottom: 56.25%;
+}
+
+.modal__content--youtube__video {
+    left: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.modal__close--wrapper {
+    cursor: pointer;
+    height: 70px;
+    padding: 25px;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    width: 70px;
+}
+
+.modal__close {
+    background: linear-gradient(transparent, transparent 9px, white 9px, white, 11px, transparent 11px),
+                linear-gradient(to right, transparent, transparent 9px, white 9px, white, 11px, transparent 11px);
+    cursor: pointer;
+    height: 20px;
+    transform: rotate(45deg);
+    transition: transform .3s ease;
+    width: 20px;
+}
+
+.modal__close--wrapper:hover .modal__close {
+    transform: rotate(0);
 }

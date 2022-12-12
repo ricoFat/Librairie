@@ -9,7 +9,7 @@ import Livre from './livre.js';
 
         this._el =  el;
         this._elsFiltre = this._el.querySelectorAll('[data-js-filter]');
-        this.elLivre = document.querySelector('[data-js-livre]');
+        this.elLivres = document.querySelector('[data-js-livres]');
         this.init();
  
     }
@@ -38,7 +38,7 @@ import Livre from './livre.js';
 
     afficherChargementPage()
     {
-        this.elLivre.innerHTML = "";
+        this.elLivres.innerHTML = "";
 
         for (let i= 0; i< 12; i++) {
             this.injecterDom(i);
@@ -56,7 +56,7 @@ import Livre from './livre.js';
     afficherLivres(filter)
     {
         
-        this.elLivre.innerHTML = "";
+        this.elLivres.innerHTML = "";
 
         for (let i = 0; i < livres.length; i++) 
         {
@@ -88,17 +88,15 @@ import Livre from './livre.js';
  
      injecterDom(i) 
      {
-        let Dom ="";
-        Dom = ` <div class="carte" data-js-position= ${i}>
+        let dom = ` <div class="carte" data-js-position= ${i}>
                     <img src="${livres[i].image}">
                     <p>${livres[i].titre}</p>
-                    <p><b>${livres[i].prix}$</b></p>
+                    <p><b>${livres[i].prix} $</b></p>
                     <button>Ajouter</button>
                     </div>`;
-         this.elLivre.insertAdjacentHTML('beforeend', Dom);
-         new Livre(this.elLivre.lastElementChild);
+         this.elLivres.insertAdjacentHTML('beforeend', dom);
+         new Livre(this.elLivres.lastElementChild);
          
-         return Dom;
      }
 }
 
