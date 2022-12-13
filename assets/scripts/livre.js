@@ -1,26 +1,21 @@
 import { livres } from "./livres.js";
-import Panier from "./panier.js";
+import Panier from "./Panier.js";
 
 export default class Livre
 {
-    #description;
-    #titre;
-    #editeur;
-    #pages;
-    #auteur;
 
     /**
-     * Constructeur de la classe Livre 
-     * @param oLivre
-     */
+    * Constructeur de la classe Livre 
+    * @param el
+    */
     constructor(el)
     {
-         this._el = el;
-         this.position = this._el.dataset.jsPosition;
-         this._elPanel = document.querySelector('[data-js-modal]');
-         this.elAffiche = document.querySelector('[data-js-livre]');
-         this.AjoutBtn = this._el.querySelector('button');
-    
+        this._el = el;
+        this._position = this._el.dataset.jsPosition;
+        this._elPanel = document.querySelector('[data-js-modal]');
+        this._elAffiche = document.querySelector('[data-js-livre]');
+        this._AjoutBtn = this._el.querySelector('button');
+        
         this.init()
     }
 
@@ -28,16 +23,19 @@ export default class Livre
     {
 
         this._el.addEventListener('click', this.afficheModal.bind(this));
-        this._elPanel.addEventListener('click', this.closeModal.bind(this));
-        this.AjoutBtn.addEventListener('click', this.ajouterSession.bind(this));
-             
+        this._elPanel.addEventListener('click', this.fermerModal.bind(this));
+        this._AjoutBtn.addEventListener('click', this.ajouterSession.bind(this));
+                
     } 
 
+    /**
+     * Fonction d'affichage du modal
+     */
 
     afficheModal() 
     {
+        
         this._elPanel.classList.replace('modal--close' ,'modal--open');
-    
         let dom = ` 
                     <img src="${livres[this.position].image}">
                     <div class = "info-livre">
@@ -47,37 +45,87 @@ export default class Livre
                         <p>Pages: ${livres[this.position].pages} </p>
                         <p>${livres[this.position].description} </p>
                     </div>
-                    `;
-         this.elAffiche.innerHTML = dom;
-          
+                        `;
+                    
+        this._elAffiche.innerHTML = dom;        
     }
 
-    closeModal()
+    /**
+     * Fonction de fermeture du modal
+     */
+
+    fermerModal()
     {
         this._elPanel.classList.replace('modal--open', 'modal--close');
+            
+            /* le modal */
         
-        /* le modal */
-        this.elAffiche = ``;
-        console.log(this.elAffiche);
     }
 
-    ajouterSession()
+    /** 
+     * @param {*} e
+     * fonction d'ajout du livre à la session storage au clic du bouton ajouter
+     *  Sauvegardes les objets dans un tableau d'objets  Json
+     */
+
+    ajouterSession(e)
     {
-        let sessionStorage = new Panier();
+        e.stopPropagation();
+                
         let obj = {
-            titre: livres[this.position].titre,
-            prix: livres[this.position].prix
+                    titre: livres[this.position].titre,
+                    prix: livres[this.position].prix
+                },
+            panier;
+
+        /**
+         * Si la session storage est null on initialise le tableau à vide 
+         * on ajoute le premier livre 
+         * Sinon  on recupère le tableau en session et ajouter le nouvel objet
+         */
+                
+        if (sessionStorage.getItem('panier') === null) 
+        {   
+            panier = [];
+            panier.push(obj);
+            sessionStorage.setItem('panier', JSON.stringify(panier));
+        }
+        else
+        {
+            panier = JSON.parse(sessionStorage.getItem('panier'));
+            let estPresent = estPresentLivre();
+
+            if (!estPresent) 
+            {
+                panier.push(obj);    
+            }
+                    
+            // Enregistrer le tableau dans le session storage
+            sessionStorage.setItem('panier', JSON.stringify(panier));
+                    
         }
 
+        console.log(panier);
 
-        console.log("session");
+        /**
+         * fonction qui vérifie la presence d'un livre qu'on doit ajouter 
+         * S'il existe on retourne vrai  sinon on retourne faux.
+         * 
+         * @returns boolean
+         */
 
-        sessionStorage.setItem('livre',JSON.stringify(obj));
+        function estPresentLivre() {
+            let estPresent = false;
 
-        let data = JSON.parse(sessionStorage.livre);
-
-        console.log("data.titre: " + data.titre);
-        console.log("data.prix: " + data.prix);
+            for (let i = 0; i < panier.length && !estPresent; i++) {
+                let item = panier[i];
+                if (item.titre == obj.titre) {
+                    estPresent = true;
+                }
+            }
+            return estPresent;
+        }
+           
     }
 
 }

@@ -1,4 +1,4 @@
-import Livre from "./livre.js";
+import Livre from "./Livre.js";
 export default class Panier
 {
     constructor(el)

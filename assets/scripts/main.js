@@ -1,4 +1,4 @@
-import Librairie from './librairie.js';
+import Librairie from './Librairie.js';
 (function () 
 {
 

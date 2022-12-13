@@ -1,23 +1,21 @@
 import {livres} from './livres.js';
-import Livre from './livre.js';
+import Livre from './Livre.js';
 
- export default class Librairie
- {
+export default class Librairie
+{
 
     constructor(el)
     {
 
         this._el =  el;
         this._elsFiltre = this._el.querySelectorAll('[data-js-filter]');
-        this.elLivres = document.querySelector('[data-js-livres]');
+        this._elLivres = document.querySelector('[data-js-livres]');
         this.init();
  
     }
 
-
     init()
     {
-
         this.afficherChargementPage();
 
         for (let i = 0 ; i < this._elsFiltre.length ; i++) {
@@ -25,7 +23,6 @@ import Livre from './livre.js';
             this._elsFiltre[i].addEventListener('click',function (e) {
                 e.preventDefault;
                 let filter = e.target.dataset.jsFilter;
-                //console.log(filter);
                 this.afficherLivres(filter);
                 
             }.bind(this))
@@ -38,7 +35,7 @@ import Livre from './livre.js';
 
     afficherChargementPage()
     {
-        this.elLivres.innerHTML = "";
+        this._elLivres.innerHTML = "";
 
         for (let i= 0; i< 12; i++) {
             this.injecterDom(i);
@@ -56,7 +53,7 @@ import Livre from './livre.js';
     afficherLivres(filter)
     {
         
-        this.elLivres.innerHTML = "";
+        this._elLivres.innerHTML = "";
 
         for (let i = 0; i < livres.length; i++) 
         {
@@ -79,24 +76,24 @@ import Livre from './livre.js';
     }
 
     /**
-     * 
-     * Fonction d'injection du livre dans le dom 
-     * @param {*} Dom 
-     * @param {*} i 
-     * @returns Dom
-     */
+    * 
+    * Fonction d'injection du livre dans le dom 
+    * @param {*} Dom 
+    * @param {*} i 
+    * @returns Dom
+    */
  
-     injecterDom(i) 
-     {
+    injecterDom(i) 
+    {
         let dom = ` <div class="carte" data-js-position= ${i}>
-                    <img src="${livres[i].image}">
-                    <p>${livres[i].titre}</p>
-                    <p><b>${livres[i].prix} $</b></p>
-                    <button>Ajouter</button>
+                        <img src="${livres[i].image}">
+                        <p>${livres[i].titre}</p>
+                        <p><b>${livres[i].prix} $</b></p>
+                        <button>Ajouter</button>
                     </div>`;
-         this.elLivres.insertAdjacentHTML('beforeend', dom);
-         new Livre(this.elLivres.lastElementChild);
+         this._elLivres.insertAdjacentHTML('beforeend', dom);
+         new Livre(this._elLivres.lastElementChild);
          
-     }
+    }
 }
 
