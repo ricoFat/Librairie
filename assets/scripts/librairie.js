@@ -86,10 +86,12 @@ export default class Librairie
     injecterDom(i) 
     {
         let dom = ` <div class="carte" data-js-position= ${i}>
-                        <img src="${livres[i].image}">
-                        <p>${livres[i].titre}</p>
-                        <p><b>${livres[i].prix} $</b></p>
-                        <button>Ajouter</button>
+                        <img src="${livres[i].image}" alt="${livres[i].titre}">
+                        <div>
+                            <p>${livres[i].titre}</p>
+                            <p><b>${livres[i].prix} $</b></p>
+                            <button>Ajouter</button>
+                        </div>
                     </div>`;
          this._elLivres.insertAdjacentHTML('beforeend', dom);
          new Livre(this._elLivres.lastElementChild);

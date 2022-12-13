@@ -11,12 +11,13 @@ export default class Livre
     constructor(el)
     {
         this._el = el;
-        this._position = this._el.dataset.jsPosition;
+        this.position = this._el.dataset.jsPosition;
         this._elPanel = document.querySelector('[data-js-modal]');
         this._elAffiche = document.querySelector('[data-js-livre]');
         this._AjoutBtn = this._el.querySelector('button');
-        
-        this.init()
+        this._elHTML= document.documentElement;
+        this._elBody = document.body;
+        this.init();
     }
 
     init()
@@ -47,7 +48,9 @@ export default class Livre
                     </div>
                         `;
                     
-        this._elAffiche.innerHTML = dom;        
+        this._elAffiche.innerHTML = dom;  
+        this._elHTML.classList.toggle('overflow-y-hidden');
+        this._elBody.classList.toggle('overflow-y-hidden');      
     }
 
     /**
@@ -57,8 +60,8 @@ export default class Livre
     fermerModal()
     {
         this._elPanel.classList.replace('modal--open', 'modal--close');
-            
-            /* le modal */
+        this._elHTML.classList.toggle('overflow-y-hidden');
+        this._elBody.classList.toggle('overflow-y-hidden');
         
     }
 
@@ -68,7 +71,7 @@ export default class Livre
      *  Sauvegardes les objets dans un tableau d'objets  Json
      */
 
-    ajouterSession(e)
+     ajouterSession(e)
     {
         e.stopPropagation();
                 
@@ -98,20 +101,22 @@ export default class Livre
             if (!estPresent) 
             {
                 panier.push(obj);    
-            }
+            } 
                     
             // Enregistrer le tableau dans le session storage
-            sessionStorage.setItem('panier', JSON.stringify(panier));
-                    
+            sessionStorage.setItem('panier', JSON.stringify(panier)); 
+                     
         }
+        panier = 
 
         console.log(panier);
+        new Panier(JSON.parse(sessionStorage.panier)); 
 
         /**
          * fonction qui vérifie la presence d'un livre qu'on doit ajouter 
          * S'il existe on retourne vrai  sinon on retourne faux.
          * 
-         * @returns boolean
+         * @returns boolean estPresent
          */
 
         function estPresentLivre() {
@@ -126,6 +131,6 @@ export default class Livre
             return estPresent;
         }
            
-    }
+    } 
 
 }
