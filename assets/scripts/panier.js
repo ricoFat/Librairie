@@ -21,7 +21,7 @@ export default class Panier
     {
         let total = this.calculerTotal();
         
-        if(this._el.length == 0 || this._el === null)
+        if(this._el.length == 0 || this._el === null|| sessionStorage.panier === null)
         {
             console.log("il n,y a pas d'item dans le panier");
         }
@@ -31,6 +31,11 @@ export default class Panier
                 let item  = this._el[i];
                 console.log("titre: "  + item.titre);
                 console.log("prix: " + item.prix + "\n");
+
+                let domPanier = `<div>
+                    <small>${item.titre}</small>
+                    <small>${item.prix}</small>
+                </div>`
                 
             }
         }
