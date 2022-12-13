@@ -1,6 +1,4 @@
 import { livres } from "./livres.js";
-import Panier from "./Panier.js";
-
 export default class Livre
 {
 
@@ -107,9 +105,6 @@ export default class Livre
             sessionStorage.setItem('panier', JSON.stringify(panier)); 
                      
         }
-
-        console.log(panier);
-        //new Panier(JSON.parse(sessionStorage.panier)); 
 
         /**
          * fonction qui vérifie la presence d'un livre qu'on doit ajouter 
