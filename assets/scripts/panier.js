@@ -56,7 +56,6 @@ export default class Panier
         }
         
         this._elAffiche.innerHTML = domPanier;  
-
     }
 
     /**
