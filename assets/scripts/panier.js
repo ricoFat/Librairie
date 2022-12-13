@@ -23,7 +23,7 @@ export default class Panier
         
         if(this._el.length == 0 || this._el === null|| sessionStorage.panier === null)
         {
-            console.log("il n,y a pas d'item dans le panier");
+            console.log("il n'y a pas d'item dans le panier");
         }
         else
         {
