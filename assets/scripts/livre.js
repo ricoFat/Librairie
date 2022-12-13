@@ -30,7 +30,7 @@ export default class Livre
     } 
 
     /**
-     * Fonction d'affichage du modal
+     * 
      */
 
     afficheModal() 
@@ -107,10 +107,9 @@ export default class Livre
             sessionStorage.setItem('panier', JSON.stringify(panier)); 
                      
         }
-        panier = 
 
         console.log(panier);
-        new Panier(JSON.parse(sessionStorage.panier)); 
+        //new Panier(JSON.parse(sessionStorage.panier)); 
 
         /**
          * fonction qui vérifie la presence d'un livre qu'on doit ajouter 

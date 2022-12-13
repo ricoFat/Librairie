@@ -1,67 +1,78 @@
-import Livre from "./Livre.js";
 export default class Panier
 {
     constructor(el)
     {
         this._el = el;
-        this._panier = document.querySelector('[data-js-panier]');
+        this._elAffiche = document.querySelector ('[data-js-affichage]');
 
-        //console.log(this._panier);
         this.init();
     }
 
     init()
     {
-        this._panier.addEventListener('click', this.afficherPanier.bind(this));
+        this._el.addEventListener('click', this.afficherPanier.bind(this));
     }
 
-    afficherPanier()
+    /**
+     * Fonction d'affichage  du panier
+     */
 
-
-    {
-        let total = this.calculerTotal();
+    afficherPanier() {
+        this._elAffiche.innerHTML = '';
+        let panier = JSON.parse(sessionStorage.panier),
+        total = this.calculerTotal(panier),
+        domPanier;
         
-        if(this._el.length == 0 || this._el === null|| sessionStorage.panier === null)
+        if(panier.length == 0 || !sessionStorage.panier)
         {
-            console.log("il n'y a pas d'item dans le panier");
+            domPanier = `<p>Il n\'y a pas d\'item dans le panier</p>`;
         }
         else
         {
-            for (let i = 0; i < this._el.length; i++) {
-                let item  = this._el[i];
-                console.log("titre: "  + item.titre);
-                console.log("prix: " + item.prix + "\n");
+            domPanier =  `<table>
+             <tr>
+                <th><small>Titre</small></th>
+                <th><small>Prix</small></th>
+             </tr>`;
+            for (let i = 0; i < panier.length; i++) {
+                let item  = panier[i];
 
-                let domPanier = `<div>
-                    <small>${item.titre}</small>
-                    <small>${item.prix}</small>
-                </div>`
+                console.log("titre: "  + item.titre);
+                console.log("prix: " + item.prix  );
+
+                  domPanier += `<tr>
+                    <td><small>${item.titre}</small></td>
+                    <td><small>${item.prix}$</small></td>
+                 <tr> 
+                `;
                 
             }
+            domPanier +=`
+            <tr>
+                    <td><small>Total</small></td>
+                    <td><small>${total}$</small></td>
+                 <tr>
+            </table>`;
         }
-
-       
-
         
-        console.log("Total: " + total);
+        this._elAffiche.innerHTML = domPanier;  
 
     }
+    
 
     /**
      *  fonction qui calcule le prix total des livres 
      * @returns total 
      */
 
-    calculerTotal() 
+    calculerTotal(panier) 
     {
         let total = 0
-        for (let i = 0; i < this._el.length; i++) {
-            let item = this._el[i];
+        for (let i = 0; i < panier.length; i++) {
+            let item = panier[i];
 
             total += item.prix;
         }
         return total;
     }
 }
-
-
