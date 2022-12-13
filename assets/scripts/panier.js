@@ -49,8 +49,8 @@ export default class Panier
             }
             domPanier +=`
             <tr>
-                    <td><small>Total</small></td>
-                    <td><b>${total}$</b></td>
+                    <td><small><b>Total</b></small></td>
+                    <td><small><b>${total}$</b></small></td>
                  <tr>
             </table>`;
         }
@@ -58,7 +58,6 @@ export default class Panier
         this._elAffiche.innerHTML = domPanier;  
 
     }
-    
 
     /**
      *  fonction qui calcule le prix total des livres 

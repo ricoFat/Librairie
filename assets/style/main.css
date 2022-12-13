@@ -196,18 +196,10 @@ footer
 
 .dropdown {
 	position: relative;
-}
-
-.dropdown-content{
-    position: absolute;
     min-width: max-content;
-    z-index: 1;
-    /* background-color:black; */
+    background-color: whiteq;
 }
 
-.dropdown-content:active{
-    display: block;
-}
 
 table {
     border: 1px solid;
