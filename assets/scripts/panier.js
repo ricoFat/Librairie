@@ -50,7 +50,7 @@ export default class Panier
             domPanier +=`
             <tr>
                     <td><small>Total</small></td>
-                    <td><small>${total}$</small></td>
+                    <td><b>${total}$</b></td>
                  <tr>
             </table>`;
         }
