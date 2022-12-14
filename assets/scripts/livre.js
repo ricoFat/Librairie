@@ -1,4 +1,5 @@
 import { livres } from "./livres.js";
+import Panier from "./Panier.js";
 export default class Livre
 {
 
@@ -102,7 +103,14 @@ export default class Livre
             } 
                     
             // Enregistrer le tableau dans le session storage
-            sessionStorage.setItem('panier', JSON.stringify(panier)); 
+            sessionStorage.setItem('panier', JSON.stringify(panier));
+            let elPanier = document.querySelector('[data-js-panier]');
+            if (elPanier)
+            {   
+                let cart =  new Panier(elPanier);
+                cart.afficherPanier();
+            } 
+            
                      
         }
 

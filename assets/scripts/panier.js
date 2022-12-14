@@ -23,7 +23,7 @@ export default class Panier
         total = this.calculerTotal(panier),
         domPanier;
         
-        if(panier.length == 0 || !sessionStorage.panier)
+        if(!panier)
         {
             domPanier = `<p>Il n\'y a pas d\'item dans le panier</p>`;
         }
@@ -36,10 +36,6 @@ export default class Panier
              </tr>`;
             for (let i = 0; i < panier.length; i++) {
                 let item  = panier[i];
-
-                console.log("titre: "  + item.titre);
-                console.log("prix: " + item.prix  );
-
                   domPanier += `<tr>
                     <td><small>${item.titre}</small></td>
                     <td><small>${item.prix}$</small></td>
@@ -73,4 +69,6 @@ export default class Panier
         }
         return total;
     }
+
+    
 }
